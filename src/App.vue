@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HeaderComp/>
+  <WorldMap/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComp from './components/HeaderComp.vue'
+import WorldMap from './components/WorldMap.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderComp,
+    WorldMap
   }
 }
 </script>
@@ -21,6 +23,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 20px;
+}
+
+.header {
+  background-color: #3d5e80;
+  color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    display: block;
+}
+.header h1 {
+  margin-bottom: 40px;
 }
 </style>

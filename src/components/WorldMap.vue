@@ -11,7 +11,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <!-- Loop through the list get the each earthquake data -->
+                      <!-- Loop through the list to get the each earthquake detailed data -->
                       <tr v-for="item in items" :key='item'>
                       <td >{{item.title}}</td>
                       <td>{{item.mag}}</td>
@@ -29,7 +29,7 @@
                   :center="center"
                   :zoom="3"
                 >
-                  <!-- Loop through the list get the each earthquake marker -->
+                  <!-- Loop through the list to get the each earthquake marker -->
                   <Marker v-for="(location, i) in locations" :options="{ position: {lat:location.geometry.coordinates[1],lng: location.geometry.coordinates[0]}}" :key="i">
                       
                       <InfoWindow>
@@ -50,6 +50,12 @@
 </template>
 
 <script>
+
+/**
+ * @author Vandana Pareek
+ * @version 0.0.1
+ */
+
 import { defineComponent } from "vue";
 import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
 import axios from 'axios'
@@ -65,24 +71,21 @@ export default defineComponent({
             }
         },
   async mounted() {
+
+      //Retrieve earthquake data
       axios.get("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson").then(response => {
-        this.locations = response.data.features;
-        console.log(this.locations);
-        }).catch((error) => {
-        console.log(error);
-        })
+            this.locations = response.data.features;
 
-        axios.get("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson").then(response => {
-          this.items = response.data.features.filter((e) => e.properties.title != "").map((e) => { return {title: e.properties.title, place: e.properties.place, url:e.properties.url, mag:e.properties.mag}});
-          this.items = this.items.sort((a, b) => b.mag - a.mag); 
+            this.items = this.locations.filter((e) => e.properties.title != "").map((e) => { return {title: e.properties.title, place: e.properties.place, url:e.properties.url, mag:e.properties.mag}});
 
-          console.log(this.items);
+            this.items = this.items.sort((a, b) => b.mag - a.mag); 
         }).catch((error) => {
         console.log(error);
         })
     },
     methods:{
       getDate(UNIX_timestamp) {
+        //Retrieve date & time from timestamp
         var date = new Date(UNIX_timestamp).toLocaleDateString("SGT")
         var time = new Date(UNIX_timestamp).toLocaleTimeString("SGT")
         return date + " " + time 

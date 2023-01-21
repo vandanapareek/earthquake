@@ -1,4 +1,5 @@
 <template>
+<div class="content">
      <div class="flex-container">
           <div class="flex-child left-div">
               <table id="tableComponent" class="table table-bordered table-striped">
@@ -25,9 +26,9 @@
           <div class="flex-child right-div">
                 <GoogleMap
                   api-key="AIzaSyBc0kVzrUeEzW81aW02aZHGbYpu0u5wsds"
-                  style="width: 100%; height: 500px"
+                  style="width: 100%; height: 650px"
                   :center="center"
-                  :zoom="3"
+                  :zoom="2"
                 >
                   <!-- Loop through the list to get the each earthquake marker -->
                   <Marker v-for="(location, i) in locations" :options="{ position: {lat:location.geometry.coordinates[1],lng: location.geometry.coordinates[0]}}" :key="i">
@@ -47,6 +48,7 @@
                 </GoogleMap>
           </div>
       </div>
+    </div>
 </template>
 
 <script>
@@ -67,7 +69,7 @@ export default defineComponent({
               center: { lat: -28.024, lng: 140.887 },
               locations:[],
               items:[],
-              theads:["Title","Magnitude","URL", "Place"]
+              theads:["Title","MAG","URL", "Place"]
             }
         },
   async mounted() {
@@ -93,58 +95,3 @@ export default defineComponent({
     }
 });
 </script>
-
-<style>
-.flex-container {
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 0;
-}
-
-.flex-child {
-  flex-grow: 1;
-    flex: 1;
-}  
-
-.flex-child:first-child {
-    font-size: 14px;
-    font-weight: bold;
-    overflow-y: auto;
-    height: 500px;
-    overflow-x: hidden;
-    flex: 4;
-} 
-
-.right-div{
-  flex: 7;
-}
-
-@media (max-width: 640px) {
-  .flex-container {
-        flex-direction: column;
-    }
-    .left,
-    .right {
-        width: auto;
-        height: 50px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-  .left-div,
-  .right-div {
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-table { 
-    table-layout:fixed;
-}
-td { 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    word-wrap: break-word;
-}
-</style>

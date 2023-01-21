@@ -1,0 +1,106 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px;
+}
+
+.header {
+    background-image: url("https://images.unsplash.com/photo-1442606383395-175ee96ed967?q=80&fm=jpg&s=5c8c74be9bc91b47c79a1aaf92264be5");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    display: block;
+    height: 100px;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+  .header h1 {
+    color: #efefef;
+    font-size: 4vw;
+  }
+
+.img-container{
+    background-image:url('https://images.unsplash.com/photo-1442606383395-175ee96ed967?q=80&fm=jpg&s=5c8c74be9bc91b47c79a1aaf92264be5'); 
+    width:100%;
+    height:100%;
+    -webkit-filter: blur(5px);
+    z-index:0;
+    position:absolute;
+    left: 0;
+    right: 0;
+    z-index: -9999;
+}
+.content{
+    z-index:10;
+    position:relative;
+}
+.flex-container {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+    background-color: azure;
+    border-radius: 12px;
+}
+.flex-child {
+  flex-grow: 1;
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    font-size: 14px;
+    font-weight: bold;
+    overflow-y: auto;
+    height: 650px;
+    overflow-x: hidden;
+    flex: 4;
+    border-radius: 12px;
+} 
+
+.right-div{
+  flex: 7;
+}
+
+table { 
+    table-layout:fixed;
+}
+td,thead { 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
+}
+thead {
+  background-color: #6495ED;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 800px) {
+  .flex-container {
+        flex-direction: column;
+  }
+  .left-div,
+  .right-div {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .right-div {
+    margin-top: 10px;
+  }
+  .flex-container {
+    height: 200vh;
+    overflow-y: scroll;
+  }
+  .header h1 {
+    font-size: 7vw;
+  }
+}

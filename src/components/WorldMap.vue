@@ -25,7 +25,7 @@
 
           <div class="flex-child right-div">
                 <GoogleMap
-                  api-key="AIzaSyBc0kVzrUeEzW81aW02aZHGbYpu0u5wsds"
+                  api-key="AIzaSyBgTqFPmospQvnR38AFyrIiHWsYoa373w8"
                   style="width: 100%; height: 650px"
                   :center="center"
                   :zoom="2"

@@ -1,4 +1,4 @@
-# earthquake
+# Earthquake Details
 1. Web page is to integrate with an API to fetch earthquake information.
 2. The page is to be mobile responsive.
 3. The page is to display a Google map, plotting the earthquake locations as annotations / pins. 
